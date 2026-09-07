@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js + Express - Directorio Público</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="14" stroke="#61dafb" stroke-width="2"/>
+                    <path d="M16 6 L16 14 M10 16 L16 16 M16 16 L22 16 M16 16 L16 26" stroke="#61dafb" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="16" cy="16" r="4" fill="#61dafb"/>
+                </svg>
+                <span>express.static</span>
+            </div>
+            <h1>El directorio <code>public/</code></h1>
+            <p class="tagline">Cómo Express sirve archivos estáticos sin que te des cuenta</p>
+        </header>
+
+        <main>
+            <section class="card demo-card">
+                <div class="card-header">
+                    <span class="badge">🎯 Demo en vivo</span>
+                </div>
+                <div class="url-bar">
+                    <span class="protocol">http://</span>
+                    <span class="domain">localhost:3000</span>
+                    <span class="path">/style.css</span>
+                </div>
+                <div class="arrow-flow">
+                    <div class="step browser">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="3" width="20" height="14" rx="2"/>
+                            <path d="M8 21h8M12 17v4"/>
+                        </svg>
+                        <span>Navegador</span>
+                    </div>
+                    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                    <div class="step express">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                        <span>Express</span>
+                    </div>
+                    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                    <div class="step folder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+                        </svg>
+                        <span>public/</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card grid-card">
+                <div class="card-header">
+                    <span class="badge">📁 Estructura real</span>
+                </div>
+                <div class="file-tree">
+                    <div class="tree-item root">
+                        <svg class="icon folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+                        </svg>
+                        <span class="name">proyecto/</span>
+                    </div>
+                    <div class="tree-children">
+                        <div class="tree-item">
+                            <svg class="icon file js" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                            <span class="name">index.js</span>
+                            <span class="desc">Servidor Express</span>
+                        </div>
+                        <div class="tree-item">
+                            <svg class="icon file json" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                            <span class="name">package.json</span>
+                        </div>
+                        <div class="tree-item folder-item">
+                            <svg class="icon folder open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+                            </svg>
+                            <span class="name">public/</span>
+                            <span class="desc">← Carpeta mágica</span>
+                            <div class="tree-children nested">
+                                <div class="tree-item">
+                                    <svg class="icon file html" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                    </svg>
+                                    <span class="name">index.html</span>
+                                    <span class="url">→ se sirve en <code>/</code></span>
+                                </div>
+                                <div class="tree-item">
+                                    <svg class="icon file css" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                    </svg>
+                                    <span class="name">style.css</span>
+                                    <span class="url">→ se sirve en <code>/style.css</code></span>
+                                </div>
+                                <div class="tree-item">
+                                    <svg class="icon file js" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <polyline points="14 2 14 8 20 8"/>
+                                    </svg>
+                                    <span class="name">script.js</span>
+                                    <span class="url">→ se sirve en <code>/script.js</code></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card code-card">
+                <div class="card-header">
+                    <span class="badge">💻 Solo 3 líneas mágicas</span>
+                </div>
+                <pre class="code-block"><code><span class="kw">const</span> express = <span class="fn">require</span>(<span class="str">'express'</span>);
+<span class="kw">const</span> app = <span class="fn">express</span>();
+<span class="kw">const</span> puerto = <span class="num">3000</span>;
+
+<span class="comment">// 👇 Esta línea hace TODO el trabajo</span>
+app.<span class="fn">use</span>(express.<span class="fn">static</span>(<span class="str">'public'</span>));
+
+app.<span class="fn">listen</span>(puerto, () => {
+  <span class="fn">console</span>.<span class="fn">log</span>(<span class="str">`Server en http://localhost:${puerto}`</span>);
+});</code></pre>
+            </section>
+
+            <section class="card rules-card">
+                <div class="card-header">
+                    <span class="badge">🧠 Reglas de oro</span>
+                </div>
+                <div class="rules-grid">
+                    <div class="rule">
+                        <div class="rule-icon">1</div>
+                        <div>
+                            <h4>No pongas <code>public</code> en la URL</h4>
+                            <p>El navegador pide <code>/style.css</code>, Express busca en <code>public/style.css</code></p>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <div class="rule-icon">2</div>
+                        <div>
+                            <h4><code>index.html</code> es especial</h4>
+                            <p>Se sirve automáticamente en la raíz <code>/</code> sin escribir el nombre</p>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <div class="rule-icon">3</div>
+                        <div>
+                            <h4>El orden importa</h4>
+                            <p>Pon <code>express.static</code> <strong>antes</strong> de tus rutas API para que no las intercepte</p>
+                        </div>
+                    </div>
+                    <div class="rule">
+                        <div class="rule-icon">4</div>
+                        <div>
+                            <h4>Múltiples carpetas</h4>
+                            <p><code>app.use(express.static('public'))</code> y <code>app.use('/assets', express.static('assets'))</code></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card try-card">
+                <h3>🧪 Pruébalo tú mismo</h3>
+                <p>Abre la consola del navegador (F12) y escribe:</p>
+                <div class="console-commands">
+                    <button class="cmd-btn" data-cmd="fetch('/style.css').then(r => r.text()).then(console.log)">Ver CSS crudo</button>
+                    <button class="cmd-btn" data-cmd="fetch('/').then(r => r.text()).then(t => console.log(t.slice(0,200)))">Ver HTML crudo</button>
+                    <button class="cmd-btn" data-cmd="console.log('Rutas estáticas:', performance.getEntriesByType('resource').map(r => r.name))">Listar recursos</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Hecho con <span class="heart">♥</span> para aprender Node.js + Express</p>
+            <p class="small">Carpeta <code>public/</code> = archivos que el cliente <strong>puede ver</strong></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
